@@ -1,6 +1,6 @@
 // Initialize game variables
 
-const gameWords = ['aposimz', 'aquaelie', 'bebop', 'odyssey', 'sidonia'];
+const gameWords = ['aposimz', 'aquaelie', 'bebop', 'jehuty', 'odyssey', 'sidonia'];
 
 // Returns random word from gameWords array
 randomWord = () => gameWords[Math.floor(Math.random() * gameWords.length)];
@@ -17,4 +17,11 @@ isCorrectGuess = (word, letter) => {
     }
 }
 
-console.log(isCorrectGuess('adios', 'a'))
+// Returns an array of underscores with equal length to that of the word
+getBlanks = word => {
+    const blanks = [];
+    for (let i = 0; i < word.length; i++) {
+        blanks.push('_');
+    }
+    return blanks;
+}
