@@ -34,3 +34,13 @@ fillBlanks = (word, puzzleState, letter) => {
     }
     return puzzleState;
 }
+
+setupRound = word => {
+    const round = {
+        word: randomWord(),
+        guessesLeft: 9,
+        wrongGuesses: [],
+        puzzleState: getBlanks(word)
+    }
+    return round;
+}
