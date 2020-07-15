@@ -1,3 +1,5 @@
+'use strict';
+
 // Initialize game variables
 const gameWords = [
     'aposimz', 
