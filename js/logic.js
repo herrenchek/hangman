@@ -13,8 +13,6 @@ const gameWords = [
 // Returns random word from gameWords array
 randomWord = () => gameWords[Math.floor(Math.random() * gameWords.length)];
 
-console.log(randomWord())
-
 // Determines if letter is in word and returns Boolean
 isCorrectGuess = (word, letter) => word.indexOf(letter) >= 0;
 
@@ -37,12 +35,27 @@ fillBlanks = (word, puzzleState, letter) => {
     return puzzleState;
 }
 
+// Game management logic
 setupRound = word => {
     const round = {
-        word: randomWord(),
+        word: word,
         guessesLeft: 9,
         wrongGuesses: [],
         puzzleState: getBlanks(word)
     }
     return round;
 }
+
+updateRound = () => {}
+
+hasWon = () => {}
+
+hasLost = () => {}
+
+isEndOfRound = () => {}
+
+setupGame = () => {}
+
+startNewRound = () => {}
+
+const myGame;
