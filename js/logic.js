@@ -46,16 +46,30 @@ setupRound = word => {
     return round;
 }
 
-updateRound = () => {}
+updateRound = (round, letterGuessed) => {
+    if (isCorrectGuess(round.word, letterGuessed)) {
+        round.puzzleState = fillBlanks(round.word, round.puzzleState, letterGuessed);
+    } else {
+        round.wrongGuesses.push(letterGuessed);
+        round.guessesLeft -= 1;
+    }
+}
 
-hasWon = () => {}
+hasWon = puzzleState => puzzleState.indexOf('_') === -1;
 
-hasLost = () => {}
+hasLost = guessesLeft => guessesLeft === 0;
 
-isEndOfRound = () => {}
+isEndOfRound = round => {}
 
-setupGame = () => {}
+setupGame = () => {
+    const game = {
+        words: words,
+        wins: wins,
+        losses: losses,
+        round: round
+    }
+}
 
-startNewRound = () => {}
+startNewRound = game => {}
 
 const myGame;
