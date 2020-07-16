@@ -11,13 +11,13 @@ const gameWords = [
 ];
 
 // Returns random word from gameWords array
-randomWord = () => gameWords[Math.floor(Math.random() * gameWords.length)];
+let randomWord = () => gameWords[Math.floor(Math.random() * gameWords.length)];
 
 // Determines if letter is in word and returns Boolean
-isCorrectGuess = (word, letter) => word.indexOf(letter) >= 0;
+let isCorrectGuess = (word, letter) => word.indexOf(letter) >= 0;
 
 // Returns an array of underscores with equal length to that of the word
-getBlanks = word => {
+let getBlanks = word => {
     const blanks = [];
     for (let i = 0; i < word.length; i++) {
         blanks.push('_');
@@ -26,7 +26,7 @@ getBlanks = word => {
 }
 
 // Fills blanks array in the correct locations given a letter and the word that array was built from
-fillBlanks = (word, puzzleState, letter) => {
+let fillBlanks = (word, puzzleState, letter) => {
     for (let i = 0; i < word.length; i++) {
         if (word[i] === letter) {
             puzzleState[i] = letter;
@@ -36,7 +36,7 @@ fillBlanks = (word, puzzleState, letter) => {
 }
 
 // Game management logic
-setupRound = word => {
+let setupRound = word => {
     let blanks = getBlanks(word);
 
     return {
@@ -48,7 +48,7 @@ setupRound = word => {
 }
 
 // Updates round after each guess
-updateRound = (round, letterGuessed) => {
+let updateRound = (round, letterGuessed) => {
     if (isCorrectGuess(round.word, letterGuessed)) {
         round.puzzleState = fillBlanks(round.word, round.puzzleState, letterGuessed);
     } else {
@@ -58,16 +58,16 @@ updateRound = (round, letterGuessed) => {
 }
 
 // Checks if user has completed word
-hasWon = puzzleState => puzzleState.indexOf('_') === -1;
+let hasWon = puzzleState => puzzleState.indexOf('_') === -1;
 
 // Checks if user has lost
-hasLost = guessesLeft => guessesLeft === 0;
+let hasLost = guessesLeft => guessesLeft === 0;
 
 // Checks if current round is over
-isEndOfRound = round => hasWon(round.puzzleState) || hasLost(round.guessesLeft);
+let isEndOfRound = round => hasWon(round.puzzleState) || hasLost(round.guessesLeft);
 
 // Returns object to generate a new round
-setupGame = (words, wins, losses) => {
+let setupGame = (words, wins, losses) => {
     let round = setupRound(randomWord(words));
 
     return {
@@ -78,8 +78,18 @@ setupGame = (words, wins, losses) => {
     };
 }
 
+// Constructor notation
+// let SetupGame = (words, wins, losses) => {
+//     let round = setupRound(randomWord(words)); {
+//         this.words = words;
+//         this.wins = wins;
+//         this.losses = losses;
+//         this.round = round;
+//     }
+// }
+
 // Updates game state and triggers new setup
-startNewRound = game => {
+let startNewRound = game => {
     let currentRound = game.round;
 
     if (hasWon(currentRound.puzzleState)) {
