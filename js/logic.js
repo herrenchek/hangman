@@ -2,11 +2,11 @@
 
 // Initialize game variables
 const gameWords = [
-    'aposimz', 
-    'aquaelie', 
-    'bebop', 
-    'jehuty', 
-    'odyssey', 
+    'aposimz',
+    'aquaelie',
+    'bebop',
+    'jehuty',
+    'odyssey',
     'sidonia'
 ];
 
@@ -37,15 +37,17 @@ fillBlanks = (word, puzzleState, letter) => {
 
 // Game management logic
 setupRound = word => {
-    const round = {
+    let blanks = getBlanks(word);
+
+    return {
         word: word,
         guessesLeft: 9,
         wrongGuesses: [],
-        puzzleState: getBlanks(word)
-    }
-    return round;
+        puzzleState: blanks
+    };
 }
 
+// Updates round after each guess
 updateRound = (round, letterGuessed) => {
     if (isCorrectGuess(round.word, letterGuessed)) {
         round.puzzleState = fillBlanks(round.word, round.puzzleState, letterGuessed);
@@ -55,21 +57,41 @@ updateRound = (round, letterGuessed) => {
     }
 }
 
+// Checks if user has completed word
 hasWon = puzzleState => puzzleState.indexOf('_') === -1;
 
+// Checks if user has lost
 hasLost = guessesLeft => guessesLeft === 0;
 
-isEndOfRound = round => {}
+// Checks if current round is over
+isEndOfRound = round => hasWon(round.puzzleState) || hasLost(round.guessesLeft);
 
-setupGame = () => {
-    const game = {
+// Returns object to generate a new round
+setupGame = (words, wins, losses) => {
+    let round = setupRound(randomWord(words));
+
+    return {
         words: words,
         wins: wins,
         losses: losses,
         round: round
-    }
+    };
 }
 
-startNewRound = game => {}
+// Updates game state and triggers new setup
+startNewRound = game => {
+    let currentRound = game.round;
 
-const myGame;
+    if (hasWon(currentRound.puzzleState)) {
+        game.wins += 1;
+        alert('Winner! The word was ' + currentRound.word);
+    } else if (hasLost(currentRound.guessesLeft)) {
+        game.losses += 1;
+        alert('You lost. The word was ' + currentRound.word);
+    }
+
+    game.round = setupRound(randomWord(game.words));
+}
+
+// Starts the game
+const myGame = setupGame(gameWords, 0, 0);
