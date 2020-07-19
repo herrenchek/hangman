@@ -79,6 +79,7 @@ const isEndOfRound = round => hasWon(round.puzzleState) || hasLost(round.guesses
 // }
 
 // Constructor notation
+// An arrow function cannot be used as a function constructor
 function SetupGame(words, wins, losses) {
     this.words = words;
     this.wins = wins;
@@ -104,4 +105,17 @@ const startNewRound = game => {
 // Starts the game
 const myGame = new SetupGame(gameWords, 0, 0);
 
-console.log(myGame);
+// Uses the ramdom word and displays the empty blanks
+document.getElementById("puzzle-state").innerHTML = myGame.round.puzzleState.join(" ");
+
+//Initializes element with the id 'wrong-guesses' as empty
+document.getElementById("wrong-guesses").innerHTML = myGame.round.wrongGuesses;
+
+//Initializes element with the id 'guesses-left' as 9
+document.getElementById("guesses-left").innerHTML = myGame.round.guessesLeft;
+
+//Initializes element with the id 'win-counter' as 0
+document.getElementById("win-counter").innerHTML = myGame.wins;
+
+//Initializes element with the id 'loss-counter' as 0
+document.getElementById("loss-counter").innerHTML = myGame.losses;
