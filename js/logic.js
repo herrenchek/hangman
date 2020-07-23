@@ -1,5 +1,10 @@
 'use strict';
 
+// Game instructions
+(function() {
+    alert('Welcome! Instructions go here.');
+})();
+
 // Initialize game variables
 const gameWords = [
     'aposimz',
@@ -67,25 +72,26 @@ const hasLost = guessesLeft => guessesLeft === 0;
 const isEndOfRound = round => hasWon(round.puzzleState) || hasLost(round.guessesLeft);
 
 // Returns object to generate a new round
-// const setupGame = (words, wins, losses) => {
-//     let round = setupRound(randomWord(words));
+const setupGame = (words, wins, losses) => {
+    let round = setupRound(randomWord(words));
 
-//     return {
-//         words: words,
-//         wins: wins,
-//         losses: losses,
-//         round: round
-//     };
-// }
+    return {
+        words: words,
+        wins: wins,
+        losses: losses,
+        round: round
+    };
+}
 
 // Constructor notation
 // An arrow function cannot be used as a function constructor
-function SetupGame(words, wins, losses) {
-    this.words = words;
-    this.wins = wins;
-    this.losses = losses;
-    this.round = setupRound(randomWord(words));
-}
+// function SetupGame(words, wins, losses) {
+//     this.words = words;
+//     this.wins = wins;
+//     this.losses = losses;
+    // Less efficient than above arrow function
+//     this.round = setupRound(randomWord(words));
+// }
 
 // Updates game state and triggers new setup
 const startNewRound = game => {
