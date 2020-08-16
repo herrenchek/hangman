@@ -1,6 +1,6 @@
 'use strict';
 
-// Game instructions
+// Game instructions IIFE
 (function () {
     alert('Welcome! Instructions go here.');
 })();
@@ -134,7 +134,7 @@ document.onkeyup = function handleKeypress(event) {
     // Check if the key pressed is a letter
     if (event.keyCode >= 65 && event.keyCode <= 90) {
         // Converts all key clicks to lowercase letters
-        var letterGuessed = event.key.toLowerCase();
+        let letterGuessed = event.key.toLowerCase();
 
         updateRound(myGame.round, letterGuessed);
 
