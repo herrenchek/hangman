@@ -8,4 +8,4 @@ Word guess game commonly know as 'hangman', uses JavaScript to dynamically updat
 `Bootstrap`
 
 ## Acknowledgements
-* Music by [Eric Matyas](www.soundimage.org)
+* Music by [Eric Matyas](https://www.soundimage.org)
