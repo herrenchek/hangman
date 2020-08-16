@@ -1,7 +1,7 @@
 'use strict';
 
 // Game instructions
-(function() {
+(function () {
     alert('Welcome! Instructions go here.');
 })();
 
@@ -89,7 +89,7 @@ const setupGame = (words, wins, losses) => {
 //     this.words = words;
 //     this.wins = wins;
 //     this.losses = losses;
-    // Less efficient than above arrow function
+// Less efficient than above arrow function
 //     this.round = setupRound(randomWord(words));
 // }
 
@@ -109,19 +109,43 @@ const startNewRound = game => {
 }
 
 // Starts the game
-const myGame = new SetupGame(gameWords, 0, 0);
+const myGame = setupGame(gameWords, 0, 0);
 
-// Uses the ramdom word and displays the empty blanks
-document.getElementById("puzzle-state").innerHTML = myGame.round.puzzleState.join(" ");
+// DOM instructions
 
-//Initializes element with the id 'wrong-guesses' as empty
-document.getElementById("wrong-guesses").innerHTML = myGame.round.wrongGuesses;
+const updatePage = game => {
+    // Uses the ramdom word and displays the empty blanks
+    document.getElementById("puzzle-state").innerHTML = game.round.puzzleState.join(" ");
 
-//Initializes element with the id 'guesses-left' as 9
-document.getElementById("guesses-left").innerHTML = myGame.round.guessesLeft;
+    //Initializes element with the id 'wrong-guesses' as empty
+    document.getElementById("wrong-guesses").innerHTML = game.round.wrongGuesses;
 
-//Initializes element with the id 'win-counter' as 0
-document.getElementById("win-counter").innerHTML = myGame.wins;
+    //Initializes element with the id 'guesses-left' as 9
+    document.getElementById("guesses-left").innerHTML = game.round.guessesLeft;
 
-//Initializes element with the id 'loss-counter' as 0
-document.getElementById("loss-counter").innerHTML = myGame.losses;
+    //Initializes element with the id 'win-counter' as 0
+    document.getElementById("win-counter").innerHTML = game.wins;
+
+    //Initializes element with the id 'loss-counter' as 0
+    document.getElementById("loss-counter").innerHTML = game.losses;
+}
+
+document.onkeyup = function handleKeypress(event) {
+    // Check if the key pressed is a letter
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+        // Converts all key clicks to lowercase letters
+        var letterGuessed = event.key.toLowerCase();
+
+        updateRound(myGame.round, letterGuessed);
+
+        if (isEndOfRound(myGame.round)) {
+            startNewRound(myGame);
+        }
+
+        // Update what's shown on the page
+        updatePage(myGame);
+    }
+};
+
+// On page load, set up info
+updatePage(myGame);
