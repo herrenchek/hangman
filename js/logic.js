@@ -99,10 +99,10 @@ const startNewRound = game => {
 
     if (hasWon(currentRound.puzzleState)) {
         game.wins += 1;
-        alert('Winner! The word was ' + currentRound.word);
+        alert('Winner! The word was ' + currentRound.word + '.');
     } else if (hasLost(currentRound.guessesLeft)) {
         game.losses += 1;
-        alert('You lost. The word was ' + currentRound.word);
+        alert('You lost. The word was ' + currentRound.word + '.');
     }
 
     game.round = setupRound(randomWord(game.words));

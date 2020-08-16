@@ -1,0 +1,48 @@
+body {
+    background-image: url('https://media.giphy.com/media/UmkhBoZkijluw/giphy.gif');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    font-family: "Press Start 2P";
+}
+
+h1 {
+    font-size: 50px;
+    color: #f5f2d0;
+    text-shadow: 0 0 5px #f5f2d0, 0 0 10px #f5f2d0, 0 0 20px #ac241d, 0 0 30px #ac241d, 0 0 40px #ac241d, 0 0 55px #ac241d, 0 0 75px #ac241d;
+    text-align: center;
+}
+
+h2 {
+    font-size: 15px;
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ac241d, 0 0 30px #ac241d, 0 0 40px #ac241d, 0 0 55px #ac241d, 0 0 75px #ac241d;
+    text-align: center;
+    margin-top: 15px;
+}
+
+span {
+    color: #fff;
+}
+
+p {
+    color: #ac241d;
+}
+
+.footer p {
+    font-size: 12px;
+}
+
+a {
+    color: #cc261d;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+#puzzle-state {
+    font-size: 20px;
+    color: #fff;
+}
