@@ -2,7 +2,7 @@
 
 // Game instructions IIFE
 (function () {
-    alert('Welcome! Instructions go here.');
+    alert('Welcome! You have 9 attempts to guess the \'password\'. Good luck!');
 })();
 
 // Initialize game variables
